@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="calender">
+        <h2 class="month">April</h2>
+
+        <div class="nameoweek">
+            <h5>SUN</h5>
+            <h5>MON</h5>
+            <h5>TUE</h5>
+            <h5>WED</h5>
+            <h5>THU</h5>
+            <h5>FRI</h5>
+            <h5>SAT</h5>
+        </div>
+
+    <div class="set1">
+        <p>01</p>
+        <p>02</p>
+        <p>03</p>
+        <p>04</p>
+        <p>05</p>
+        <p>06</p>
+        <p>07</p>
+    </div>
+
+    <div class="set2">
+        <p>08</p>
+        <p>09</p>
+        <p>10</p>
+        <p>11</p>
+        <p>12</p>
+        <p>13</p>
+        <p>14</p>
+    </div>
+
+    <div class="set3">
+        <p>15</p>
+        <p>16</p>
+        <p>17</p>
+        <p>18</p>
+        <p>19</p>
+        <p>20</p>
+        <p>21</p>
+    </div>
+
+    <div class="set4">
+        <p>22</p>
+        <p>23</p>
+        <p>24</p>
+        <p>25</p>
+        <p>26</p>
+        <p>27</p>
+        <p>28</p>
+    </div>
+
+    <div class="set5">
+        <p>29</p>
+        <p>30</p>
+        <p>31</p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        
+    </div>
+    </div>
+
+    <style>
+    .calender { 
+            background-color: #006d77;
+            padding: 80px;
+            width: 527.5px;
+            height: 500px;
+            margin: auto;
+            margin-top: 40px;
+           
+        }
+
+        .month {
+            text-align: center;
+        }
+
+        .nameoweek {
+            display: flex;
+            justify-content: space-evenly;
+            font-size: 30px;
+        }
+
+        .set1 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:space-evenly;
+            font-size: 25px;
+        }
+
+        .set2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:space-evenly;
+            font-size: 25px;
+        }
+
+        .set3 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:space-evenly;
+            font-size: 25px;
+        }
+
+        .set4 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:space-evenly;
+            font-size: 25px;
+        }
+
+        .set5 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:space-evenly;
+            font-size: 25px;
+        }
+
+
+    </style>
+
+    <script>
+        var date = new Date();
+console.log(date);
+// Function Calendar
+function calendar()
+{
+var month = date.getMonth();
+console.log(month);
+const yyyy = date.getFullYear();
+console.log(yyyy);
+date.setDate(1);
+
+const name_Days=["Sun", "Mon", "Tue", "Wed", "Thus", "Fri", "Sat"];
+const day_Week =[0,1,2,3,4,5,6];
+var month_number =[0,1,2,3,4,5,6,7,8,9,10,11];
+console.log(month_number);
+const namesMonth=["January", "Febuary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
+
+// Last date of the current month
+const lastDay = new Date(date.getFullYear(), date.getMonth() + 1,0).getDate();
+console.log(lastDay); 
+
+//last date of the previous month
+const prevLastDay = new Date(date.getFullYear(), date.getMonth() + 1,0).getDate();
+console.log(prevLastDay);
+
+//First day of the current month
+const firstDayIndex = date.getDay();
+console.log(firstDayIndex);
+
+//last day of the week 
+const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1,0).getDay();
+console.log(lastDayIndex);
+
+//To start from the first day of the week 
+const nextDays = 7 - lastDayIndex - 1;
+console.log(nextDays);
+
+// Display name of month and year 
+const nameofmonth=document.querySelector(".monthname");
+ for (var n=0; n<=11; n++){
+ if(month_number[n]=== month)
+ {
+     nameofmonth.innerHTML = `<div>
+     <h1>
+     ${namesMonth[month]} ${yyyy} </h1>
+     </div>`
+ }
+ }
+
+// Display name of week days
+const nameofdays =document.querySelector('.calendar-weekDays');
+ let nod="";
+ for(var j=0; j<=6; j++)
+ {
+     nod+= `<div> ${name_Days[j]} </div>`
+     console.log(nod);
+     nameofdays.innerHTML = nod;
+ }
+
+ 
+ let days = " ";
+ for (let x = firstDayIndex; x > 0; x--){
+     days += `<div class="prev-date">${prevLastDay - x + 1}</div>`;
+ }
+
+ const displayDays = document.querySelector(".calendar-monthDays");
+ for (let i=1; i<= lastDay; i++) {
+     if (
+         i === new Date().getDate() &&
+         date.getMonth() === new Date().getMonth() 
+     ){
+         days += `<div>${i}</div>`;
+         displayDays.innerHTML = days;
+     } else {
+         days += `<div>${i}</div>`;
+         displayDays.innerHTML= days;
+     }
+ }
+
+ for (let j = 1; j <= nextDays; j++) {
+     days += `<div class = "next-date">${j}</div>`;
+     displayDays.innerHTML = days;
+ }
+}
+// end of function
+calendar();
+
+const prev_btn=document.querySelector(".prevMonth");
+
+prev_btn.addEventListener("click", function(){
+    date.setMonth(date.getMonth() - 1);
+    calendar();
+})
+
+// next month
+const next_btn=document.querySelector(".nextMonth");
+
+next_btn.addEventListener("click", function(){
+    date.setMonth(date.getMonth() + 1);
+    calendar();
+})
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+
+.calendar-body{
+    display: grid;
+    background-color: #C3B5A2;
+    width: 50%;
+    height: 600px;
+    margin: auto;
+    
+    box-shadow: #32325d40 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.calendar-weekDays{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    color: white;
+    column-gap: 5%;
+    font-size: 1.5rem;
+    text-align: center;
+
+}
+
+
+
+.calendar-monthDays {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    color:  #8C775A;
+    column-gap: 5%;
+    row-gap: 10%;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: -250px;
+}
+
+
+.monthname{
+    color: #5A6F8C;
+    background-color: #C3B5A2;
+    width: 50%;
+    margin-top: 60px;
+    margin-left: 380px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+h1{
+    font-size: 2rem;
+    padding: 5%;
+    margin-bottom: -2%;
+    text-align: center;
+}
+
+.prev-date, .next-date {
+    opacity: .5;
+}
+
+.prevMonth, .nextMonth{
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.prevMonth {
+    margin-left: 380px;
+}
+
+.nextMonth {
+    margin-left: 610px;
+}
+
+.prevMonth:hover, .nextMonth:hover {
+    background-color: #C3B5A2;
+    transition: .2s;
+
+}
